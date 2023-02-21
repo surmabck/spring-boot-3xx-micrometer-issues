@@ -19,24 +19,6 @@ class DemoApplicationTest(@Autowired private val context: ApplicationContext) {
     private val testClient = WebTestClient.bindToApplicationContext(context).build()
     private val traceIdRegex = Regex("\\[traceId=[a-z0-9]{32}\\]")
 
-    /**
-     * when @AutoConfigureObservability is present and
-     * property management.baggage.correlation.fields is configured
-     * "Misalignment: popped updateScope false !=  expected false"
-     * happens
-     */
-    @Test
-    fun `should return 200 ok`() {
-        testClient
-            .get()
-            .uri("/helloWorld")
-            .accept(MediaType.TEXT_PLAIN)
-            .exchange()
-            .expectStatus()
-            .is2xxSuccessful
-    }
-
-
     @Test
     fun `should log traceId in WebExceptionHandler`(capturedOutput: CapturedOutput) {
         testClient

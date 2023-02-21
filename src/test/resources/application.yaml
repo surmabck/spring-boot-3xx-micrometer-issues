@@ -7,9 +7,3 @@ management:
     sampling.probability: 1.0
     propagation:
       type: b3
-    baggage:
-      correlation:
-        fields:
-          - SomeHeader
-      remote-fields:
-        - SomeHeader
