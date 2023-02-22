@@ -5,7 +5,11 @@ val kotlinVersion: String by project
 val jvmVersion: String by project
 val projectGroup: String by project
 val projectVersion: String by project
+val micrometerTracingVersion: String by project
+val micrometerVersion: String by project
 
+extra["micrometer.version"] = micrometerVersion
+extra["micrometer-tracing.version"] = micrometerTracingVersion
 plugins {
 	kotlin("jvm") apply true
 	id("org.springframework.boot") apply false
@@ -45,9 +49,9 @@ allprojects {
 	dependencies {
 		runtimeOnly("org.springframework.boot:spring-boot-starter-actuator")
 
-		implementation("io.micrometer:context-propagation")
-		implementation("io.micrometer:micrometer-observation")
-		implementation("io.micrometer:micrometer-tracing-bridge-brave")
+		implementation("io.micrometer:micrometer-observation:${micrometerVersion}")
+		implementation("io.micrometer:context-propagation:${micrometerTracingVersion}")
+		implementation("io.micrometer:micrometer-tracing-bridge-brave:${micrometerTracingVersion}")
 
 		implementation("org.springframework.boot:spring-boot-starter")
 		implementation("org.springframework.boot:spring-boot-starter-webflux")
