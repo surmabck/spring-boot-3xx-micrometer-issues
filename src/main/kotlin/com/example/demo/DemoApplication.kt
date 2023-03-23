@@ -1,6 +1,5 @@
 package com.example.demo
 
-import com.example.demo.handlers.FailingHandler
 import com.example.demo.handlers.HelloWorldHandler
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
@@ -25,10 +24,9 @@ fun main(args: Array<String>) {
 internal class WebRouter {
 
     @Bean
-    fun router(helloWorldHandler: HelloWorldHandler, failingHandler: FailingHandler): RouterFunction<ServerResponse> =
+    fun router(helloWorldHandler: HelloWorldHandler): RouterFunction<ServerResponse> =
         router {
             GET("/helloWorld", helloWorldHandler::handle)
-            GET("/failing", failingHandler::handle)
         }
 
 }

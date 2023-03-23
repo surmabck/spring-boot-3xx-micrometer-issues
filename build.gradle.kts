@@ -29,6 +29,7 @@ allprojects {
 		mavenCentral()
 		maven("https://plugins.gradle.org/m2/")
 		maven("https://repo.spring.io/snapshot")
+		maven("https://repo.spring.io/milestone")
 	}
 	tasks.withType<Test> {
 		useJUnitPlatform()
@@ -51,7 +52,7 @@ allprojects {
 
 		implementation("io.micrometer:micrometer-observation:${micrometerVersion}")
 		implementation("io.micrometer:context-propagation:${micrometerTracingVersion}")
-		implementation("io.micrometer:micrometer-tracing-bridge-brave:${micrometerTracingVersion}")
+		implementation("io.micrometer:micrometer-tracing-bridge-otel:${micrometerTracingVersion}")
 
 		implementation("org.springframework.boot:spring-boot-starter")
 		implementation("org.springframework.boot:spring-boot-starter-webflux")

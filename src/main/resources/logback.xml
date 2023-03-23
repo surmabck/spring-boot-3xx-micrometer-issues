@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
     <property name="defaultPattern"
-              value="[occurredAt: %date{ISO8601}] [traceId=%X{traceId}] [span=%X{spanId}] severity=%-6level [thread=%thread] logger=%logger{0} - %msg%n"/>
+              value="[occurredAt: %date{ISO8601}] [traceId=%X{traceId}] [span=%X{spanId}] [test1=%X{test1}] [test2=%X{test2}] severity=%-6level [thread=%thread] logger=%logger{0} - %msg%n"/>
 
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
         <target>System.out</target>

@@ -10,7 +10,12 @@ management:
     sampling.probability: 1.0
     propagation:
       type: b3
-  endpoints:
-    web:
-      exposure:
-        include: metrics
+    baggage:
+      correlation:
+        enabled: true
+        fields:
+          - test1
+          - test2
+      remote-fields:
+        - test1
+        - test2
