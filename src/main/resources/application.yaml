@@ -1,6 +1,3 @@
-spring:
-  main:
-    banner-mode: off
 management:
   endpoint:
     metrics:
@@ -10,7 +7,6 @@ management:
     sampling.probability: 1.0
     propagation:
       type: b3
-  endpoints:
-    web:
-      exposure:
-        include: metrics
+    baggage:
+      correlation:
+        enabled: true

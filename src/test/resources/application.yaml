@@ -9,7 +9,4 @@ management:
       type: b3
     baggage:
       correlation:
-        fields:
-          - SomeHeader
-      remote-fields:
-        - SomeHeader
+        enabled: true
