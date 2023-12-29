@@ -10,3 +10,7 @@ management:
     baggage:
       correlation:
         enabled: true
+        fields:
+          - contextDataName
+      remote-fields:
+        - contextDataName

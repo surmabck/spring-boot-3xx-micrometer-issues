@@ -9,15 +9,21 @@ import org.springframework.web.reactive.function.server.ServerResponse
 import reactor.core.publisher.Mono
 
 @Component
-
 class HelloWorldHandler {
+
 
     private val logger = KotlinLogging.logger {}
 
     fun handle(request: ServerRequest): Mono<ServerResponse> {
-        logger.info { "Should be logged with the context" }
+        logger.info { "Should be logged with the value in the MDC context" }
         return ServerResponse.ok().contentType(MediaType.TEXT_PLAIN)
             .body(fromValue("HelloWorld"))
+            .transformDeferredContextual { mono, ctx ->
+                logger.info { "Should be logged with a value logged in plain contextDataName: ${ctx.getOrDefault("contextDataName", "default")}" }
+                mono
+            }
     }
 
 }
+
+data class ContextData(val name: String, val value: String)

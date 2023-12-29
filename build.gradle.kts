@@ -43,6 +43,15 @@ allprojects {
 	}
 
 	dependencies {
+		// this solves the issue
+//		configurations.all {
+//			resolutionStrategy.eachDependency {
+//				if (requested.group == "io.micrometer" &&
+//					(requested.name == "micrometer-tracing-bridge-brave")) {
+//					useVersion("1.2.0")
+//				}
+//			}
+//		}
 		runtimeOnly("org.springframework.boot:spring-boot-starter-actuator")
 
 		implementation("io.micrometer:micrometer-observation")
