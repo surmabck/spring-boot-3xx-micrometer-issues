@@ -26,7 +26,7 @@ private class DemoApplicationTest(@Autowired private val testClient: WebTestClie
     private val contextDataNameInPlainLogPattern = "contextDataName: $contextDataValue"
 
     @Test
-    fun `should return 200 ok and log message with traceId`(output: CapturedOutput) {
+    fun `should return 200 ok and log message with contextData in mdc context`(output: CapturedOutput) {
         testClient
             .get()
             .uri("/helloWorld")
@@ -38,7 +38,7 @@ private class DemoApplicationTest(@Autowired private val testClient: WebTestClie
     }
 
     @Test
-    fun `should return 200 ok and log message with traceId2`(output: CapturedOutput) {
+    fun `should return 200 ok and log message with contextData in plain`(output: CapturedOutput) {
         testClient
             .get()
             .uri("/helloWorld")
