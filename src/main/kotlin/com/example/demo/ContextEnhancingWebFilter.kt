@@ -25,7 +25,6 @@ internal class ContextEnhancingConfiguration {
     ) = ContextEnhancingWebFilter(tracer, ContextData("someOtherName", "someOtherValue"))
 }
 
-//@Component
 internal class ContextEnhancingWebFilter(
     private val tracer: Tracer,
     private val contextData: ContextData
@@ -47,17 +46,13 @@ internal class ContextEnhancingWebFilter(
 
             }
             .contextWrite {
-                setContextValue(contextData, exchange, it)
+                setContextValue(contextData, it)
             }
 }
 
 internal fun setContextValue(
     contextData: ContextData,
-    exchange: ServerWebExchange,
     context: Context
 ): Context {
-
-    exchange.attributes[contextData.name] = contextData.value
     return context.put(contextData.name, contextData.value)
-
 }
